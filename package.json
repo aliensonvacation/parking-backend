@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "kill -9 $(lsof -ti :4000) 2>/dev/null || true && nodemon --watch src --ext ts --exec ts-node src/index.ts"
+    "dev": "kill -9 $(lsof -ti :4000) 2>/dev/null || true && nodemon --watch src --ext ts --exec ts-node src/index.ts",
+    "start": "ts-node -P ./tsconfig.json ./src/index.ts"
   },
   "keywords": [],
   "author": "",
