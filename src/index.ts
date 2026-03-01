@@ -99,6 +99,15 @@ const lastReportByDeviceSegment = new Map<string, number>();
 const app = express();
 app.use(express.json());
 
+// --- CORS (allow browser requests) ---
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, X-Device-Id");
+  if (req.method === "OPTIONS") return res.sendStatus(204);
+  next();
+});
+
 app.get("/health", (_req: Request, res: Response) => {
   res.json({ ok: true });
 });
